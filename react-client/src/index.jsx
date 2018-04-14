@@ -2,45 +2,53 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
+import ListItem from './components/ListItem.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      Note: {
-        title:'',
-        text:''
-      }
+      texts:[]
     }
 
-    this.onChange = this.onChange.bind(this)
-    this.submit = this.submit.bind(this)
+  
 }
 
-onChange(e){
-  var Note = this.state.Note
-  var name = e.target.name
-  var value = e.target.value
-  Note[name] = value;
-  this.setState({Note})
-}
 
-submit(){
+
+submit(term){
+  
   $.ajax({
     type: 'POST',
-    url: '/Notes',
-    data: this.state,
-    sucess: (data) => {
+    url: '/notes', 
+    data: {text:term},
+    success: (data) => {
       console.log('post',data)
+    },
+    error:(err)=>{
+      console.error(err)
+    }
+  })
+
+   $.ajax({
+    type: 'GET',
+    url: '/notes', 
+    success: (data) => {
+      this.setState({
+        texts:data
+      })
+    },
+    error:(err)=>{
+      console.error(err)
     }
   })
 }
   render () {
     return (<div>
-      <h1>Item List</h1>
-      <input type="text" placeholder="tilte" name="title" value={this.state.tilte} onChange={this.onChange}/>
-      <input type="text" placeholder="text" name="text" value={this.state.text} onChange={this.onChange}/>
-     <button onClick={this.submit}>Submit></button>
+      <h1>Weekly Diaries</h1>
+      <List texts={this.state.texts}/>
+      <ListItem add={this.submit.bind(this)}/>
+      
     </div>)
   }
 }

@@ -15,7 +15,6 @@ db.once('open', function() {
 
 
 var NoteSchema = mongoose.Schema({
-  title: String,
   text: String
 });
 
@@ -34,17 +33,17 @@ var save = (data,callback) => {
   })
 }
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, notes) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, notes);
-    }
-  });
-};
+// var selectAll = function(callback) {
+//   Note.find({}, function(err, notes) {
+//     if(err) {
+//       callback(err, null);
+//     } else {
+//       callback(null, notes);
+//     }
+//   });
+// };
 
-module.exports.selectAll = selectAll;
+// module.exports.selectAll = selectAll;
 module.exports.save = save;
 module.exports.Note = Note;
 

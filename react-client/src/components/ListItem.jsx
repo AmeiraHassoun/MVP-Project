@@ -9,22 +9,26 @@ class ListItem extends React.Component{
 		this.onChange=this.onChange.bind(this)
 		this.submit=this.submit.bind(this)
 	}
+
 	onChange(e){
 		this.setState({
 			text:e.target.value
 		})
 	}
+
 	submit(){
 		this.props.add(this.state.text)
 	}
+
 	render(){
 		return(
-  <div>
-   <input value={this.state.text} onChange={this.onChange}/>
-     <button onClick={this.submit}>Deposite</button>
-  </div>
-  )
-}
+		  <div>
+		   <input value={this.state.text} onChange={this.onChange}/>
+		   <button onClick={this.submit}>Deposite</button>
+		  </div>
+	)
+   }
+   
 }
 
 export default ListItem;

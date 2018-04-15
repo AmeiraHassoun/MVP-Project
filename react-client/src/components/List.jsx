@@ -3,9 +3,9 @@ import ListItem from './ListItem.jsx';
 
 const List = (props) => (
   <div>
-    <h4> Add one to your experience credit :) </h4>
-    { props.texts.map(function(text){
-    	return <p> {text.text}</p>
+    <ul> Add one to your experience credit :) </ul>
+    {props.texts.map(function(text){
+    	return <li> {text.text}</li>
     })}
   </div>
 )

@@ -10,11 +10,7 @@ class App extends React.Component {
     this.state = { 
       texts:[]
     }
-
-  
 }
-
-
 
 submit(term){
   
@@ -52,4 +48,5 @@ submit(term){
     </div>)
   }
 }
+
 ReactDOM.render(<App />, document.getElementById('app'));

@@ -16,13 +16,6 @@ app.post('/notes', function (req, res) {
 		}
 		res.send(data)
 	})
-  // items.selectAll(function(err, data) {
-  //   if(err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // });
 });
 
 app.get('/notes', function (req, res) {
@@ -31,7 +24,7 @@ app.get('/notes', function (req, res) {
 			res.send(err)
 		}else{
     var array=[];
-    for (var i = data.length-3; i < data.length; i++) {
+    for (var i = data.length-7; i < data.length; i++) {
       array.push(data[i])
     }
 		res.send(array)
@@ -39,13 +32,6 @@ app.get('/notes', function (req, res) {
 	})
 
 });
-  // items.selectAll(function(err, data) {
-  //   if(err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // });
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
